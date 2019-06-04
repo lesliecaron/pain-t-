@@ -47,11 +47,14 @@ Voici la liste exhaustive des fonctionnalités :
    * **2** : Met la dernière forme sélectionnée à un plan plus éloigné ;
    * **Ctrl + S** : Sauvegarde le dessin dans un fichier dans le dossier saves ;
    * **Ctrl + O** : Charge un fichier de sauvegarde ;
+   
+   Nous avons eu quelques difficultées concernant le **Ctrl + C**, au debut nous ajoutions simplement une nouvelle forme similaire au **model** mais l'application ne fonctionnait pas comme nous le souhaitions alors nous avons donc cloné les formes selectionnées avant de les ajouter au **model**.
+   
 
 
 ## Choix de l'implantation
 
-un sol assez humide et ensoilleié de préférence
+
 
 ### Gestion de l'interface
 
@@ -134,7 +137,15 @@ Nous avons donc recherché de meilleures solutions et nous avons trouvé l'inter
 La sauvegarde et l'ouverture de fichier peuvent se faire via 2 boutons dans l'interface graphiques ou via 2 raccourcis clavier **Ctrl+S** et **Ctrl+O**. La sauvegarde ouvre une **JOptionPane** pour permettre de choisir le nom du fichier de sauvegarde et l'ouverture de fichier ouvre un **JFileChooser** qui permet de parcourir les fichiers du PC pour sélectionner le fichier de sauvegarde. Ces fichiers sont créés par défaut dans le dossier **saves** de l'application.
 
 ### Création des formes et modification des attributs
-**Leslie, tu écriras ton bordel.<br/>**
+
+Nous avons implémentés les fonction de création des formes dans le **BannerController** pour le SRecctangle et le SOval il s'agit seulement d'ajouter une forme au modèle possédant les attributs séléctionnés dans le **pannelColor**, on séléctionne ou non les **JCheckBox** pour determiner si la forme aura une couleur de remplissage et/ou un contour et la couleur de chaque est determinée par l'utilisateur par les deux **ColorChooser**. La forme s'ajoutera lorsque l'utilisateur cliqueras sur le bouton associé appelant la fonction décrite précédement. 
+Concernant le SText, une **JPopoup** s'ouvrira lorsque l'utilisateur cliqueras sur le bouton de saisie de texte, il pourra alors saisir le texte qu'il souhaite, en cliquant sur **OK** la saisie de texte est validée, si l'utilisateur veut annuler sa saisie de texte il clique sur **ABORT**. Comme précedement le texte créé aura les attributs selectionnés dans le pannelColor.  Lorsque l'utilisateur clique sur le bouton associé a la SLine cela créé une ligne prédéfinie que l'utilisateur peur deplacer.
+
+Concernant les difficultées rencontrées,nous n'avons pas réussis a creer de nouvelle SCollection à partir de formes selectionnées et nous n'arrivont pas à orienter la ligne dans toute les directions .
+
+En ce qui concerne la modification de forme les pannels **Create** et **Modification** permettent d'agir sur les formes, les deux **JCheckBox** permettent de mettre ou non un remplissage (fill) et un contour(stroke) les deux **ColorChooser** associés permettent d'en determiner la couleurs, les changements s'appliquent directement en changeant les **ColorAttributes** des formes selectionnées,les SCollections et SLines ne peuvent pas être changées. Pour le **SText** nous pouvons aussi changer la police, la taille de police et la couleur de police via le **PanelModification**.
+
+Nous avons rencontrés quelques difficultées nottament pour changer les attributs filled et stroked de chaque formes car il fallais recuperer la valeur de la JCheckBox et ensuite changer les attributs des shapes, la modification de la SCollection posait aussi problème en raison de ses formes multiples et nous n'avons pas reussis à changer la couleur de la SLine.
 
 ## Créateurs
 * Nicolas Herr ;
